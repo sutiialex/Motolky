@@ -1,0 +1,17 @@
+An intercom bluetooth communicator application.
+This application is for free voice communication via blouetooth, between two or up to seven users.
+
+This application was specialy designed for noisy enviorments, such as a motorcyclist groups, a construction workteam or any other situation when two or more people, in the same area, want to talk to each other, but can't do it directly. 
+
+ 
+Features:
+
+- Tet-a-Tete, you can talk with a single person, (s)he can be you motorcycle pasanger, a rally copilot, or maype you pal-neighbour who is living just over the wall, and you want to stay in touch with.
+
+- Group-Talk, you can talk to up to 7 mates at the same time, sharing the same "channel" (similar to walky-talky).
+Aleosa is typing...
+Aleosa: - AVD (Automatic Voice Detection), the application will transmit data only when you are speaking, the noise is cut-off
+
+- Automatic Reconnect, you don't have to connect each time you get near to your talk-mate, once set up, the application will automatically reconnect when your talk-mate will be in the bluetooth range
+
+- Speak-out-Loud, you can also use the application using your loudspeaker on your phone. For example you can put a phone in a baby's room, and watch TV in living-room, hearing exactly what is your baby doing
