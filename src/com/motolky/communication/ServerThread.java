@@ -9,21 +9,21 @@ modification, are permitted provided that the following conditions are met:
     * Redistributions in binary form must reproduce the above copyright
       notice, this list of conditions and the following disclaimer in the
       documentation and/or other materials provided with the distribution.
-    * Neither the name of the <organization> nor the
+    * Neither the name of the author nor the
       names of its contributors may be used to endorse or promote products
       derived from this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 
 package com.motolky.communication;
 
@@ -42,12 +42,9 @@ import com.motolky.sound.RecordThread;
 /**
  * This class is a thread that receives a remote device and
  * creates a server socket from it. It accepts connections on that
- * server socket. Whenever a connection is accepted, it creates a peer
+ * server socket. Every time a connection is accepted, it creates a peer
  * for that connection. This peer does not reconnect. It closes when
- * the socket closes.
- *
- * @author Alexandru Sutii
- *
+ * its communication socket closes.
  */
 public class ServerThread extends Thread implements IConnectable {
 
@@ -59,6 +56,14 @@ public class ServerThread extends Thread implements IConnectable {
     private Device mRemoteDevice = null;
     private IConnectNotifiable mConnectNotifiable = null;
 
+    /**
+     * Constructor
+     * @param recordThread - the thread that is recording from the microphone
+     * @param bluetoothAdapter
+     * @param remoteDevice - the device from which connections will be listened
+     * @param connectNotifiable - object that will be notified when a connection
+     *          was created or destroyed
+     */
     public ServerThread(RecordThread recordThread,
                         BluetoothAdapter bluetoothAdapter,
                         Device remoteDevice,
@@ -69,6 +74,9 @@ public class ServerThread extends Thread implements IConnectable {
         mConnectNotifiable = connectNotifiable;
     }
 
+    /**
+     * End the thread. Close the server socket and remove the peer if it exists.
+     */
     public void exit() {
         mExit = true;
         if (mPeer != null) {
@@ -84,6 +92,10 @@ public class ServerThread extends Thread implements IConnectable {
         }
     }
 
+    /**
+     * Runs in a loop. At each step accepts a connection and from the remote
+     * device and creates a peer for this connection.
+     */
     @Override
     public void run() {
         UUID uuid = mRemoteDevice.getUUID();
@@ -107,6 +119,11 @@ public class ServerThread extends Thread implements IConnectable {
         }
     }
 
+    /**
+     * Normally the peer calls this method in order to get a new socket after
+     * the connection failed. However, the server cannot do that because it can only
+     * wait for other connections. That's why a null is returned.
+     */
     @Override
     public BluetoothSocket getSocket(Peer peer, Device device) throws IOException {
         return null;
