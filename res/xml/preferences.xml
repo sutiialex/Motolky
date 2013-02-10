@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference android:key="VAD Enable" 
+			android:title="Enable voice detection"
+			android:summary="Send only the sound that contains voice"
+			android:defaultValue="false" />
+	<EditTextPreference android:key="Reconnect Timeout"
+			android:title="Reconnect Timeout"
+			android:summary="After how many seconds to retry to connect to a remote device"
+			android:defaultValue="3" />
+</PreferenceScreen>

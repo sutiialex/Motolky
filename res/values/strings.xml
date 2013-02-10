@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Motolky</string>
+    <string name="group_activity_label">Motolky - Scanning devices...</string>
+    <string name="talk_activity_label">Motolky - Talk</string>
+    <string name="buttonDoneName">Done</string>
+    <string name="buttonScanName">Scan</string>
+</resources>

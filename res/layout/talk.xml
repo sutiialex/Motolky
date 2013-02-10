@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:myapp="http://schemas.android.com/apk/res/com.motolky"
+  		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent"
+  		android:orientation="vertical">
+	<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+	 		android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			android:layout_weight="1"
+			android:id="@+id/android:list"/>
+	<RelativeLayout android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+		        android:layout_marginTop="15dip"
+		        android:layout_marginBottom="15dip">
+		<ToggleButton android:id="@+id/micButton"
+		        android:layout_width="40dip"
+		        android:layout_height="40dip"
+		        android:textOn="" android:textOff=""
+		        android:layout_margin="5dip"
+		        android:checked="true"
+				android:layout_centerVertical="true"
+		        android:background="@drawable/mic_selector"
+		        android:onClick="micToggleClick"
+		        />
+		<ToggleButton android:id="@+id/speakerButton"
+		        android:layout_width="40dip"
+		        android:layout_height="40dip"
+		        android:textOn="" android:textOff=""
+				android:layout_toRightOf="@id/micButton"
+		        android:layout_marginRight="10dip"
+		        android:checked="true"
+				android:layout_centerVertical="true"
+		        android:background="@drawable/speaker_selector"
+		        android:onClick="speakerToggleClick"/>
+		<SeekBar android:id="@+id/volumeSeekbar"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_toRightOf="@id/speakerButton"
+				android:layout_centerVertical="true"
+				android:layout_marginRight="10dip"
+				android:progress="10"
+				android:max="20"/>
+	</RelativeLayout>
+</LinearLayout>
