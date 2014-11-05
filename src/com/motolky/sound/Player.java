@@ -150,8 +150,8 @@ public class Player extends Thread implements IReceiveHandler {
             try
             {
                 // Ask for a frame from the buffer
-                mCondition.await();
                 mLock.lock();
+                mCondition.await();
                 byte[] frame = mBuffer.getFrame();
                 if (frame == null) {
                     mLock.unlock();
